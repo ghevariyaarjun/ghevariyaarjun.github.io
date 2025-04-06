@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .section {
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        #static-image {
+            position: relative;
+        }
+
+        #dynamic-image {
+            position: absolute;
+            left: 329px;
+            top: 67px;
+            height: 622px;
+            width: 622px;
+            object-fit: cover;
+            border: 1px solid red;
+            border-radius: 100%;
+        }
+
+        #upload-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #download-section {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        #static-image1{
+            width: 100%;
+        }
+
+        #static-image-preview{
+            width: 100%;
+        }
+
+
+      
+    </style>
+</head>
+<body>
+    <div class="section" >
+
+    <div id="preview-image"   >
+        <img id="static-image-preview" src="vav.jpg" alt="Dynamic Image">
+    </div>
+
+    </div>
+     
+    <div id="upload-section" class="section">
+        <button id="gallery-upload">Upload from Gallery</button>
+        <button id="camera-upload">Upload from Camera</button>
+    </div>
+
+    <div id="download-section" class="section">
+        <button id="download-btn">Download Image</button>
+    </div>
+
+    <div class="section" style="overflow: scroll;width: 0;height: 0;padding: 0;margin: 0;">
+        <div id="static-image" style="
+        width: 1280px;
+        height: 1280px;
+        max-width: 1280px;
+        max-height: 1280px;
+    ">
+            <img id="static-image1" src="vav.jpg" alt="Dynamic Image">
+            <img id="dynamic-image" src="vav.jpg" alt="Dynamic Image">
+        </div>
+    </div>
+
+    
+    
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+
+    <script>
+        // Image upload functionality will be implemented here
+        document.getElementById('gallery-upload').addEventListener('click', function() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                reader.onload = event => {
+                    // Create modal for cropping
+                    const modal = document.createElement('div');
+                    modal.style.position = 'fixed';
+                    modal.style.top = '0';
+                    modal.style.left = '0';
+                    modal.style.width = '100%';
+                    modal.style.height = '100%';
+                    modal.style.backgroundColor = 'rgba(0,0,0,0.8)';
+                    modal.style.zIndex = '1000';
+                    modal.style.display = 'flex';
+                    modal.style.flexDirection = 'column';
+                    modal.style.alignItems = 'center';
+                    modal.style.justifyContent = 'center';
+                    
+                    // Create image container
+                    const imgContainer = document.createElement('div');
+                    imgContainer.style.maxWidth = '80%';
+                    imgContainer.style.maxHeight = '80%';
+                    
+                    // Create image element
+                    const img = document.createElement('img');
+                    img.id = 'cropper-image';
+                    img.src = event.target.result;
+                    img.style.maxWidth = '100%';
+                    img.style.maxHeight = '100%';
+                    
+                    // Create buttons container
+                    const btnContainer = document.createElement('div');
+                    btnContainer.style.marginTop = '20px';
+                    btnContainer.style.display = 'flex';
+                    btnContainer.style.gap = '10px';
+                    
+                    // Create crop button
+                    const cropBtn = document.createElement('button');
+                    cropBtn.textContent = 'Crop';
+                    cropBtn.style.padding = '10px 20px';
+                    
+                    // Create cancel button
+                    const cancelBtn = document.createElement('button');
+                    cancelBtn.textContent = 'Cancel';
+                    cancelBtn.style.padding = '10px 20px';
+                    cancelBtn.style.backgroundColor = '#f44336';
+                    
+                    // Append elements
+                    imgContainer.appendChild(img);
+                    btnContainer.appendChild(cropBtn);
+                    btnContainer.appendChild(cancelBtn);
+                    modal.appendChild(imgContainer);
+                    modal.appendChild(btnContainer);
+                    document.body.appendChild(modal);
+                    
+                    // Initialize cropper
+                    const cropper = new Cropper(img, {
+                        aspectRatio: 1,
+                        viewMode: 1,
+                        autoCropArea: 1,
+                        responsive: true,
+                        guides: false
+                    });
+                    
+                    // Handle crop button click
+                    cropBtn.addEventListener('click', function() {
+                        const canvas = cropper.getCroppedCanvas({
+                            width: 663,
+                            height: 663
+                        });
+                        
+                        if (canvas) {
+                            const croppedImage = canvas.toDataURL('image/png');
+                            document.getElementById('dynamic-image').src = croppedImage;
+                            document.body.removeChild(modal);
+                            
+                            setTimeout(() => {
+                                reloadImage();
+                            }, 1000);
+                        }
+                    });
+                    
+                    // Handle cancel button click
+                    cancelBtn.addEventListener('click', function() {
+                        document.body.removeChild(modal);
+                    });
+                };
+                reader.readAsDataURL(file);
+            };
+            input.click();
+        });
+
+        document.getElementById('camera-upload').addEventListener('click', function() {
+            // First check if browser supports getUserMedia
+            if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+                // If not supported, offer alternative upload method
+                if (confirm('Camera access is not supported in your browser. Would you like to upload from gallery instead?')) {
+                    document.getElementById('gallery-upload').click();
+                }
+                return;
+            }
+
+            // Check if browser has camera permissions
+            navigator.permissions && navigator.permissions.query({ name: 'camera' })
+                .then(permissionStatus => {
+                    if (permissionStatus.state === 'denied') {
+                        alert('Camera access was previously denied. Please enable camera permissions in your browser settings.');
+                        return;
+                    }
+
+                    // Proceed with camera access
+                    navigator.mediaDevices.getUserMedia({ video: true })
+                        .then(function(stream) {
+                            const video = document.createElement('video');
+                            video.srcObject = stream;
+                            video.play();
+
+                            const canvas = document.createElement('canvas');
+                            const context = canvas.getContext('2d');
+                            
+                            video.addEventListener('click', function() {
+                                canvas.width = video.videoWidth;
+                                canvas.height = video.videoHeight;
+                                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                                
+                                const imageData = canvas.toDataURL('image/png');
+                                document.getElementById('dynamic-image').src = imageData;
+                                
+                                setTimeout(() => {
+                                    reloadImage();
+                                    stream.getTracks().forEach(track => track.stop());
+                                }, 1000);
+                            });
+                        })
+                        .catch(function(error) {
+                            console.error('Error accessing camera:', error);
+                            if (error.name === 'NotAllowedError') {
+                                alert('Camera access was denied. Please allow camera permissions to use this feature.');
+                            } else {
+                                alert('Could not access camera. Please try again or use gallery upload.');
+                            }
+                        });
+                });
+        });
+
+        document.getElementById('download-btn').addEventListener('click', function() {
+            html2canvas(document.getElementById('static-image'),{
+                scale:1,
+                useCORS:false,
+                height:1280,
+                width:1280,
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'image.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            });
+        });
+
+        function reloadImage(){
+            html2canvas(document.getElementById('static-image'),{
+                scale:1,
+                useCORS:false,
+                height:1280,
+                width:1280,
+            }).then(canvas => {
+                console.log(canvas);
+                document.getElementById('static-image-preview').src = canvas.toDataURL('image/png');
+            });
+            
+        }
+    </script>
+</body>
+</html>
