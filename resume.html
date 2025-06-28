@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume - Arjun Ghevariya</title>
+    <style>
+      body {
+        font-family: Cambria, serif;
+        margin: 0;
+        background: #ccc;
+      }
+
+      .a4-page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto;
+        padding: 0;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        page-break-after: always;
+
+        font-size: 15px;
+        line-height: 20px;
+        overflow: hidden;
+      }
+
+      .header {
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: left;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      .header h3 {
+        margin: 5px 0 0;
+        font-weight: normal;
+        color: #555;
+      }
+
+      .contact {
+        background-color: #545454;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        font-size: 14px;
+      }
+
+      .contact a {
+        color: white;
+        text-decoration: none;
+      }
+
+      .print-button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .content-intro {
+        background-color: #1f497d;
+        padding: 20px;
+        color: white;
+      }
+
+      /* Section styles */
+      section {
+        margin-bottom: 20px;
+      }
+
+      section h2 {
+        border-bottom: 2px solid #333;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: #222;
+      }
+
+      /* Education */
+      .education p {
+        margin: 5px 0;
+        font-size: 14px;
+      }
+
+      /* Core Competencies list */
+      .core-competencies ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      /* Personal details */
+      .personal-details p {
+        margin: 5px 0;
+        font-size: 14px;
+      }
+
+      .left-side {
+        width: 25%;
+        max-width: 25%;
+        padding: 10px;
+        background: #f2f2f2;
+        float: left;
+        height: 100%;
+      }
+
+      .right-side {
+        width: calc(75% - 40px);
+        max-width: calc(75% - 40px);
+        padding: 10px;
+        background: #ffffff;
+        float: right;
+      }
+
+      .p-10 {
+        padding: 10px;
+      }
+
+      .company-info {
+        background-color: #dbe5f1;
+        font-weight: bold;
+      }
+
+      @media print {
+        .print-button {
+          display: none;
+        }
+
+        .a4-page {
+          width: 210mm;
+          height: 297mm;
+          box-shadow: none;
+          margin: 0;
+          padding: 0;
+          page-break-after: always;
+        }
+
+        @page {
+          size: A4;
+          margin: 0;
+        }
+
+        * {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+      }
+
+      .company-history {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .company-date {
+        background: #1f497d;
+        padding: 5px 5px 20px 5px;
+        border-radius: 5px;
+        color: white;
+        position: relative;
+      }
+
+      .company-date img {
+        height: 50px;
+        display: block;
+        margin: 5px auto;
+        position: absolute;
+        background: white;
+        border: 2px solid #1f497d;
+        border-radius: 5px;
+        max-width: 110px;
+      }
+      .right-arrow {
+        color: #545454;
+        font-size: 30px !important;
+      }
+
+      .sub-content-intro {
+        height: 100%;
+      }
+    </style>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <button class="print-button" onclick="window.print()">Print Resume</button>
+
+    <div class="a4-page">
+      <div class="header">
+        <h1>ARJUN GHEVARIYA</h1>
+        <h3>Full Stack Web Application Development</h3>
+      </div>
+
+      <div class="contact">
+        <div>
+          <i class="fa fa-mobile" aria-hidden="true"></i> +91 95105 90893
+        </div>
+        <div>
+          <i class="fa fa-envelope-o" aria-hidden="true"></i> ghevariyagmail.com
+        </div>
+        <div>
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+
+          <a
+            href="https://www.linkedin.com/in/arjun-ghevariya-33a0ba91/"
+            target="_blank"
+            >LinkedIn</a
+          >
+        </div>
+      </div>
+
+      <div class="content-intro">
+        <div>
+          Seeking a challenging role to leverage expertise in building robust
+          backend systems and intuitive frontend interfaces, while contributing
+          to innovative and performance-optimized digital solutions in a
+          collaborative, agile-driven environment.
+        </div>
+        <div>&nbsp;</div>
+        <div>Location Preference: Ahmedabad, Bangalore & Pune</div>
+      </div>
+      <div class="sub-content-intro">
+        <div class="left-side">
+          <section class="education">
+            <h2>
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i> Education
+            </h2>
+            <p>
+              <strong>2016:</strong> BCA from Veer Narmad South Gujarat
+              University, Surat
+            </p>
+          </section>
+
+          <section class="core-competencies">
+            <h2>
+              <i class="fa fa-tasks" aria-hidden="true"></i>
+              Core Competencies
+            </h2>
+            <ul>
+              <li>Software Development Lifecycle</li>
+              <li>User Experience Design</li>
+              <li>System Architecture</li>
+              <li>Performance Optimization</li>
+              <li>Code Review and Quality Assurance</li>
+              <li>Technical Documentation</li>
+              <li>Cross-Functional Collaboration</li>
+              <li>Application Security Best Practices</li>
+              <li>Data Structures and Algorithms</li>
+              <li>Business Process Improvement</li>
+            </ul>
+          </section>
+
+          <section class="personal-details">
+            <h2>
+              <i class="fa fa-address-card-o" aria-hidden="true"></i> Personal
+              Details
+            </h2>
+            <p><strong>Date of Birth:</strong> 11-06-1996</p>
+            <p><strong>Languages Known:</strong> English, Gujarati, Hindi</p>
+            <p><strong>Present Address:</strong> Surat, Gujarat, India</p>
+          </section>
+        </div>
+        <div class="right-side">
+          <section class="profile-summary">
+            <h2>
+              <i class="fa fa-user" aria-hidden="true"></i> Profile Summary
+            </h2>
+            <ul>
+              <li>
+                <strong>
+                  Seasoned Full Stack Technologist with 9+ years of end-to-end
+                  software development experience</strong
+                >
+                across dynamic startup and product environments; proficient in
+                architecting scalable web solutions.
+              </li>
+              <li>
+                <strong
+                  >Proven Agile Practitioner skilled in steering full Software
+                  Development Life Cycles (SDLC)</strong
+                >, from ideation and requirements gathering to release and
+                support, while ensuring continuous integration and continuous
+                deployment (CI/CD) best practices.
+              </li>
+              <li>
+                <strong
+                  >Backend & Frontend Expertise demonstrated through hands-on
+                  experience building performance-driven APIs, server-side
+                  logic, and interactive frontends</strong
+                >
+                with React and Angular, enhancing customer satisfaction and
+                platform usability.
+              </li>
+              <li>
+                <strong>Mentorship & Collaboration Champion</strong> with a
+                strong track record of upskilling junior developers, fostering
+                technical excellence, and driving team productivity through code
+                reviews, training sessions, and knowledge sharing.
+              </li>
+              <li>
+                <strong>Analytical Problem Solver</strong> adept at debugging
+                complex issues, optimizing legacy code, and implementing robust
+                architectures that reduce technical debt and improve
+                maintainability, scalability, and performance.
+              </li>
+              <li>
+                <strong>Client-Centric Developer</strong> experienced in
+                translating business objectives into functional technical
+                solutions, delivering user-centric web applications that align
+                with client requirements and exceed performance benchmarks.
+              </li>
+            </ul>
+          </section>
+
+          <section class="career-timeline">
+            <h2>Career Timeline</h2>
+          </section>
+
+          <div class="company-history">
+            <div class="company-date">
+              Mar’16-Mar’18
+
+              <img
+                src="https://media.licdn.com/dms/image/v2/C560BAQHnE-6Tm8L7IA/company-logo_100_100/company-logo_100_100/0/1631378232674?e=1756339200&v=beta&t=BvYa5IacaQJgXFpN3u6KCudMs2cUGvJub74kRWansdo"
+                alt="Infizer Technology"
+                style="padding: 5px 32px"
+              />
+            </div>
+            <div>
+              <i
+                class="fa fa-long-arrow-right right-arrow"
+                aria-hidden="true"
+              ></i>
+            </div>
+            <div class="company-date">
+              Mar’18-Oct’20
+              <img
+                src="https://www.atishae.com/images/logo/logo.png"
+                alt="Atishae Web Pvt Ltd."
+                style="padding: 5px 30px"
+              />
+            </div>
+            <div>
+              <i
+                class="fa fa-long-arrow-right right-arrow"
+                aria-hidden="true"
+              ></i>
+            </div>
+            <div class="company-date">
+              Oct’20-Present
+              <img
+                src="https://www.terra.do/assets/bNHw17mK-terra-logo-dark.webp"
+                alt="Terra.do"
+                style="padding: 5px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="a4-page">
+      <div class="p-10">
+        <section class="work-experience">
+          <h2>
+            <i class="fa fa-briefcase" aria-hidden="true"></i> Work Experience
+          </h2>
+          <div class="company-info">
+            <div>Oct 2020 – Present: Senior Full Stack Developer</div>
+            <div>Terra.do – Surat, India, Remote</div>
+          </div>
+          <div>
+            <p>
+              <strong><u>KEY RESULT AREAS</u></strong>
+            </p>
+          </div>
+          <ul>
+            <li>
+              <strong>Innovation & Collaboration:</strong> Driving innovation by
+              actively contributing strategic ideas and technical
+              recommendations during cross-functional team discussions, ensuring
+              alignment with project goals and timelines.
+            </li>
+            <li>
+              <strong>Project Management:</strong> Steering development
+              lifecycles by managing project milestones from conceptualization
+              to final deployment, ensuring on-time and high-quality delivery.
+            </li>
+            <li>
+              <strong>Team Leadership & Mentoring:</strong> Mentoring and
+              upskilling junior developers through structured coaching, hands-on
+              training, and continuous feedback to elevate overall team
+              competency and productivity.
+            </li>
+            <li>
+              <strong>Code Quality & Debugging:</strong> Conducting
+              comprehensive code reviews, proactively identifying performance
+              bottlenecks, debugging critical issues, and implementing scalable
+              solutions to ensure robust system functionality.
+            </li>
+            <li>
+              <strong>System Architecture & Performance Optimization:</strong>
+              Collaborating with engineering stakeholders to evaluate system
+              performance, analyze load requirements, and architect strategic
+              enhancements for improved operational efficiency.
+            </li>
+            <li>
+              <strong>Requirements Analysis & Documentation:</strong>
+              Translating client requirements into clear, actionable project
+              specifications and technical documentation to streamline
+              development and align deliverables with business needs.
+            </li>
+            <li>
+              <strong>Full Stack Development & UX/UI Optimization:</strong>
+              Engineering responsive, high-performance web applications with a
+              focus on user-centric design, optimal UI/UX, and strict adherence
+              to quality and security standards.
+            </li>
+          </ul>
+
+          <div class="company-info">
+            <div>Mar 2018 – Oct 2020: Full Stack Developer</div>
+            <div>Atishae Web Pvt Ltd. – Surat, India</div>
+          </div>
+          <div>
+            <p>
+              <strong><u>KEY RESULT AREAS</u></strong>
+            </p>
+          </div>
+          <ul>
+            <li>
+              <strong>API Development:</strong> Collaborated with
+              cross-functional backend teams to architect and optimize robust
+              RESTful APIs for seamless frontend-backend integration.
+            </li>
+            <li>
+              <strong>Database Engineering:</strong> Engineered and administered
+              scalable data models using Node.js, ORM frameworks, and both
+              SQL/NoSQL databases (e.g., PostgreSQL, MongoDB), ensuring high
+              performance and data integrity.
+            </li>
+            <li>
+              <strong>Backend Architecture:</strong> Built and deployed
+              resilient backend infrastructures, including databases,
+              server-side logic, and microservices to support complex web
+              applications and real-time data processing.
+            </li>
+            <li>
+              <strong>Code Optimization:</strong> Conducted in-depth code
+              reviews and software audits to identify performance bottlenecks,
+              security vulnerabilities, and areas for refactoring, leading to
+              enhanced system reliability.
+            </li>
+            <li>
+              <strong>Team Leadership & Mentoring:</strong> Led capability
+              development initiatives by mentoring junior developers, delivering
+              hands-on training, and fostering best practices in Software
+              Development Lifecycles (SDLC).
+            </li>
+          </ul>
+
+          <div class="company-info">
+            <div>Mar 2016 – Oct 2017: MEAN Stack Developer</div>
+            <div>Infizer Technology – Surat, India</div>
+          </div>
+          <div>
+            <p>
+              <strong><u>KEY RESULT AREAS</u></strong>
+            </p>
+          </div>
+          <ul>
+            <li>
+              <strong>Software Development Lifecycle (SDLC):</strong>
+              Spearheaded full-cycle software application engineering and
+              maintenance across the SDLC, ensuring seamless integration with
+              evolving business needs.
+            </li>
+            <li>
+              <strong>Web Development & UX:</strong> Engineered
+              high-performance, user-focused web solutions that consistently
+              fulfilled and exceeded stakeholder expectations and regulatory
+              requirements.
+            </li>
+            <li>
+              <strong>Requirements Engineering:</strong> Transformed complex
+              customer requirements into detailed technical specifications and
+              actionable project plans, enhancing delivery precision and
+              minimizing scope creep.
+            </li>
+            <li>
+              <strong>Back-End Architecture:</strong> Architected and deployed
+              robust back-end infrastructures comprising scalable databases,
+              dynamic applications, and resilient server environments to support
+              enterprise web platforms.
+            </li>
+            <li>
+              <strong>Code Quality & Debugging:</strong> Conducted rigorous code
+              reviews, executed root-cause analysis, and implemented corrective
+              measures to resolve bugs and elevate software quality and
+              stability.
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
